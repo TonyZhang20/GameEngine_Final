@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Game">
+    <Position X="2" Y="3.5" Width="3" />
+    <Members>
+      <Method Name="~Game" Hidden="true" />
+      <Method Name="Game" Hidden="true" />
+      <Method Name="operator=" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAQAEBAAAgAAAAAAAACAgAAAAAqAAAAQABAgCIQAABQ=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine">
+    <Position X="2.5" Y="0.5" Width="2" />
+    <Members>
+      <Method Name="~Engine" Hidden="true" />
+      <Method Name="Cleanup" Hidden="true" />
+      <Method Name="Engine" Hidden="true" />
+      <Method Name="GetLatestProfile_PixelShader" Hidden="true" />
+      <Method Name="GetLatestProfile_VertexShader" Hidden="true" />
+      <Method Name="InitApplication" Hidden="true" />
+      <Method Name="InitDirectX" Hidden="true" />
+      <Method Name="operator=" Hidden="true" />
+      <Method Name="Present" Hidden="true" />
+      <Method Name="QueryRefreshRate" Hidden="true" />
+      <Method Name="WndProc" Hidden="true" />
+      <Method Name="wWinMain" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AARAEBACAAQAAhAQAAkIgAAAAgAAAEAABhAgQEECAM8=</HashCode>
+      <FileName>Engine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

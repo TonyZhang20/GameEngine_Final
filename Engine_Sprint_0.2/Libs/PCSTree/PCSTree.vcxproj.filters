@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{be3729ca-4d59-4b47-b171-7e3f0c9881b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{2be8453f-2ebb-4713-9bee-caa9c8dc8399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dll">
+      <UniqueIdentifier>{15c7c324-f634-4bc3-8fe7-e6a0c5678572}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\PCSTreeForwardIterator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PCSTreeReverseIterator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PCSNode.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PCSTree.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="PCSTree_DLLMain.cpp">
+      <Filter>dll</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\PCSTree.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PCSTree_DLLInterface.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PCSTreeForwardIterator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PCSTreeReverseIterator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PCSNode.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PCSTreeIterator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

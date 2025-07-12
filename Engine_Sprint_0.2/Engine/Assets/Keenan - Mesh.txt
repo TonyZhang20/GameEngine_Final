@@ -1,0 +1,14 @@
+Raw memory binary storage of data
+
+A.tga - mesh texture
+A_POSITION.cdm - original pos data: array of Vec3f data
+A_POSITION_Center.cdm - same as above but data exported with center of (0,0,0)
+A_NORMAL.cdm - original norm data: array of Vec3f data
+A_TEXCOORD_0.cmd - original uv data: array of Vec2f data
+A_INDICIES.cdm - original index list: array of uint32_t
+
+suggestion... you can load using File lib
+you can get the count (num of elements) divide
+File size by the size of one entry
+
+Use the _Center - 100x easier to center on screen

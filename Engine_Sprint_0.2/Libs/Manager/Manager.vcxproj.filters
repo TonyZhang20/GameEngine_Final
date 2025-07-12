@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{0aea2f72-a713-48ca-af27-704fec902c58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{38ce3814-666d-47e6-aa6c-23e83e381247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dll">
+      <UniqueIdentifier>{a8ca31ee-cf3d-4bf7-bffe-1afb1df2c862}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\DLink.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DLinkIterator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DLinkMan.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ManBase.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Manager_DLLMain.cpp">
+      <Filter>dll</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="include\--- Add include files here ---.txt">
+      <Filter>include</Filter>
+    </Text>
+    <Text Include="src\--- Add Source files here ---.txt">
+      <Filter>src</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Manager_DLLInterface.h">
+      <Filter>dll</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DLink.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DLinkIterator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DLinkMan.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Iterator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ListBase.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ManBase.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\_ManagerDiagram.cd">
+      <Filter>src</Filter>
+    </None>
+  </ItemGroup>
+</Project>
