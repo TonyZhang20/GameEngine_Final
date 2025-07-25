@@ -55,3 +55,7 @@ cd ..
 cd Manager
 call "CleanMe.Bat"
 cd ..
+
+cd Events
+call "CleanMe.Bat"
+cd ..

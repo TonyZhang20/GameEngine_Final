@@ -61,11 +61,11 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;PESSAC;WINDOWS_TARGET_PLATFORM="$(TargetPlatformVersion)";SOLUTION_DIR=R"($(SolutionDir))";TOOLS_VERSION=R"($(VCToolsVersion))";LOCAL_WORKING_DIR=R"($(LocalDebuggerWorkingDirectory))";MATH_USE_DLL;ANIM_TIME_USE_DLL;FILE_USE_DLL;PCSTREE_USE_DLL;MANAGER_USE_DLL;DIRECTX_TEX_IMPORT</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;PESSAC;WINDOWS_TARGET_PLATFORM="$(TargetPlatformVersion)";SOLUTION_DIR=R"($(SolutionDir))";TOOLS_VERSION=R"($(VCToolsVersion))";LOCAL_WORKING_DIR=R"($(LocalDebuggerWorkingDirectory))";MATH_USE_DLL;EVENTS_USE_DLL;ANIM_TIME_USE_DLL;FILE_USE_DLL;PCSTREE_USE_DLL;MANAGER_USE_DLL;DIRECTX_TEX_IMPORT</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Framework_items;$(SolutionDir)Libs\Math\include;$(SolutionDir)Libs\AnimTime\include;$(SolutionDir)Libs\File\include;$(SolutionDir)Libs\PCSTree\include;$(SolutionDir)Libs\Manager\include;$(SolutionDir)Engine\DXTex\include;$(SolutionDir)Engine\shaders\compiled;$(SolutionDir)Engine\src;$(SolutionDir)Engine\src\Camera;$(SolutionDir)Engine\src\Engine;$(SolutionDir)Engine\src\Game;$(SolutionDir)Engine\src\GameObject;$(SolutionDir)Engine\src\Tool;$(SolutionDir)Engine\src\ShaderObject;$(SolutionDir)Engine\src\Mesh;$(SolutionDir)Engine\src\GraphicsObject;$(SolutionDir)Engine\src\Manager;$(SolutionDir)Engine\src\Buffers;$(SolutionDir)Engine\src\State;$(SolutionDir)Engine\src\Texture</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Framework_items;$(SolutionDir)Libs\Math\include;$(SolutionDir)Libs\AnimTime\include;$(SolutionDir)Libs\File\include;$(SolutionDir)Libs\PCSTree\include;$(SolutionDir)Libs\Manager\include;$(SolutionDir)Libs\Events\include;$(SolutionDir)Engine\DXTex\include;$(SolutionDir)Engine\shaders\compiled;$(SolutionDir)Engine\src;$(SolutionDir)Engine\src\Camera;$(SolutionDir)Engine\src\Engine;$(SolutionDir)Engine\src\Game;$(SolutionDir)Engine\src\GameObject;$(SolutionDir)Engine\src\Tool;$(SolutionDir)Engine\src\ShaderObject;$(SolutionDir)Engine\src\Mesh;$(SolutionDir)Engine\src\GraphicsObject;$(SolutionDir)Engine\src\Manager;$(SolutionDir)Engine\src\Buffers;$(SolutionDir)Engine\src\State;$(SolutionDir)Engine\src\Texture;$(SolutionDir)Engine\src\Events</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -102,11 +102,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;PESSAC;WINDOWS_TARGET_PLATFORM="$(TargetPlatformVersion)";SOLUTION_DIR=R"($(SolutionDir))";TOOLS_VERSION=R"($(VCToolsVersion))";LOCAL_WORKING_DIR=R"($(LocalDebuggerWorkingDirectory))";MATH_USE_DLL;ANIM_TIME_USE_DLL;FILE_USE_DLL;PCSTREE_USE_DLL;%(PreprocessorDefinitions);MANAGER_USE_DLL;DIRECTX_TEX_IMPORT</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;PESSAC;WINDOWS_TARGET_PLATFORM="$(TargetPlatformVersion)";SOLUTION_DIR=R"($(SolutionDir))";TOOLS_VERSION=R"($(VCToolsVersion))";LOCAL_WORKING_DIR=R"($(LocalDebuggerWorkingDirectory))";MATH_USE_DLL;EVENTS_USE_DLL;ANIM_TIME_USE_DLL;FILE_USE_DLL;PCSTREE_USE_DLL;%(PreprocessorDefinitions);MANAGER_USE_DLL;DIRECTX_TEX_IMPORT</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Framework_items;$(SolutionDir)Libs\Math\include;$(SolutionDir)Libs\AnimTime\include;$(SolutionDir)Libs\File\include;$(SolutionDir)Libs\PCSTree\include;$(SolutionDir)Libs\Manager\include;$(SolutionDir)Engine\DXTex\include;$(SolutionDir)Engine\shaders\compiled;$(SolutionDir)Engine\src;$(SolutionDir)Engine\src\Camera;$(SolutionDir)Engine\src\Engine;$(SolutionDir)Engine\src\Game;$(SolutionDir)Engine\src\GameObject;$(SolutionDir)Engine\src\Tool;$(SolutionDir)Engine\src\ShaderObject;$(SolutionDir)Engine\src\Mesh;$(SolutionDir)Engine\src\GraphicsObject;$(SolutionDir)Engine\src\Manager;$(SolutionDir)Engine\src\Buffers;$(SolutionDir)Engine\src\State;$(SolutionDir)Engine\src\Texture</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Framework_items;$(SolutionDir)Libs\Math\include;$(SolutionDir)Libs\AnimTime\include;$(SolutionDir)Libs\File\include;$(SolutionDir)Libs\PCSTree\include;$(SolutionDir)Libs\Manager\include;$(SolutionDir)Libs\Events\include;$(SolutionDir)Engine\DXTex\include;$(SolutionDir)Engine\shaders\compiled;$(SolutionDir)Engine\src;$(SolutionDir)Engine\src\Camera;$(SolutionDir)Engine\src\Engine;$(SolutionDir)Engine\src\Game;$(SolutionDir)Engine\src\GameObject;$(SolutionDir)Engine\src\Tool;$(SolutionDir)Engine\src\ShaderObject;$(SolutionDir)Engine\src\Mesh;$(SolutionDir)Engine\src\GraphicsObject;$(SolutionDir)Engine\src\Manager;$(SolutionDir)Engine\src\Buffers;$(SolutionDir)Engine\src\State;$(SolutionDir)Engine\src\Texture;$(SolutionDir)Engine\src\Events</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
       <PrecompiledHeaderOutputFile>
@@ -397,6 +397,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Libs\AnimTime\AnimTime.vcxproj">
       <Project>{4eba0483-08b6-4055-9ee8-5dc71b6f8fc9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Events\Events.vcxproj">
+      <Project>{0d656631-62c3-4812-b616-6786d7a218a6}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Libs\File\File.vcxproj">
       <Project>{4186103c-e7aa-4376-830e-cd42a28d6c12}</Project>

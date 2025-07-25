@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PCSTree", "Libs\PCSTree\PCS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework_items", "Shared\Framework_items\Framework_items.vcxitems", "{02EF1AB9-BCB9-44ED-85FA-15C9CF1B72D9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Events", "Libs\Events\Events.vcxproj", "{0D656631-62C3-4812-B616-6786D7A218A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,10 @@ Global
 		{22282E59-DB02-4210-A594-DF87ACB44E8F}.Debug|x64.Build.0 = Debug|x64
 		{22282E59-DB02-4210-A594-DF87ACB44E8F}.Release|x64.ActiveCfg = Release|x64
 		{22282E59-DB02-4210-A594-DF87ACB44E8F}.Release|x64.Build.0 = Release|x64
+		{0D656631-62C3-4812-B616-6786D7A218A6}.Debug|x64.ActiveCfg = Debug|x64
+		{0D656631-62C3-4812-B616-6786D7A218A6}.Debug|x64.Build.0 = Debug|x64
+		{0D656631-62C3-4812-B616-6786D7A218A6}.Release|x64.ActiveCfg = Release|x64
+		{0D656631-62C3-4812-B616-6786D7A218A6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{CB5A2DEE-C9B5-4627-AC47-36C0B5F11304} = {1E73620C-B943-4A56-B112-8789E09F432B}
 		{22282E59-DB02-4210-A594-DF87ACB44E8F} = {1E73620C-B943-4A56-B112-8789E09F432B}
 		{02EF1AB9-BCB9-44ED-85FA-15C9CF1B72D9} = {51EEC874-45BB-4842-BEF8-73F2C73BEDC7}
+		{0D656631-62C3-4812-B616-6786D7A218A6} = {1E73620C-B943-4A56-B112-8789E09F432B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {04CBD174-D768-46E3-886E-385899A64684}
