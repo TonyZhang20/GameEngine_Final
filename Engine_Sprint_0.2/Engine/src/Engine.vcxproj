@@ -65,7 +65,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Framework_items;$(SolutionDir)Libs\Math\include;$(SolutionDir)Libs\AnimTime\include;$(SolutionDir)Libs\File\include;$(SolutionDir)Libs\PCSTree\include;$(SolutionDir)Libs\Manager\include;$(SolutionDir)Libs\Events\include;$(SolutionDir)Engine\DXTex\include;$(SolutionDir)Engine\shaders\compiled;$(SolutionDir)Engine\src;$(SolutionDir)Engine\src\Camera;$(SolutionDir)Engine\src\Engine;$(SolutionDir)Engine\src\Game;$(SolutionDir)Engine\src\GameObject;$(SolutionDir)Engine\src\Tool;$(SolutionDir)Engine\src\ShaderObject;$(SolutionDir)Engine\src\Mesh;$(SolutionDir)Engine\src\GraphicsObject;$(SolutionDir)Engine\src\Manager;$(SolutionDir)Engine\src\Buffers;$(SolutionDir)Engine\src\State;$(SolutionDir)Engine\src\Texture;$(SolutionDir)Engine\src\Events;$(SolutionDir)Engine\src\Window</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Framework_items;$(SolutionDir)Libs\Math\include;$(SolutionDir)Libs\AnimTime\include;$(SolutionDir)Libs\File\include;$(SolutionDir)Libs\PCSTree\include;$(SolutionDir)Libs\Manager\include;$(SolutionDir)Libs\Events\include;$(SolutionDir)Engine\DXTex\include;$(SolutionDir)Engine\shaders\compiled;$(SolutionDir)Engine\src;$(SolutionDir)Engine\src\Camera;$(SolutionDir)Engine\src\Engine;$(SolutionDir)Engine\src\Game;$(SolutionDir)Engine\src\GameObject;$(SolutionDir)Engine\src\Tool;$(SolutionDir)Engine\src\ShaderObject;$(SolutionDir)Engine\src\Mesh;$(SolutionDir)Engine\src\GraphicsObject;$(SolutionDir)Engine\src\Manager;$(SolutionDir)Engine\src\Buffers;$(SolutionDir)Engine\src\State;$(SolutionDir)Engine\src\Texture;$(SolutionDir)Engine\src\Events;$(SolutionDir)Engine\src\Window;$(SolutionDir)Engine\src\Renderer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -106,7 +106,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Framework_items;$(SolutionDir)Libs\Math\include;$(SolutionDir)Libs\AnimTime\include;$(SolutionDir)Libs\File\include;$(SolutionDir)Libs\PCSTree\include;$(SolutionDir)Libs\Manager\include;$(SolutionDir)Libs\Events\include;$(SolutionDir)Engine\DXTex\include;$(SolutionDir)Engine\shaders\compiled;$(SolutionDir)Engine\src;$(SolutionDir)Engine\src\Camera;$(SolutionDir)Engine\src\Engine;$(SolutionDir)Engine\src\Game;$(SolutionDir)Engine\src\GameObject;$(SolutionDir)Engine\src\Tool;$(SolutionDir)Engine\src\ShaderObject;$(SolutionDir)Engine\src\Mesh;$(SolutionDir)Engine\src\GraphicsObject;$(SolutionDir)Engine\src\Manager;$(SolutionDir)Engine\src\Buffers;$(SolutionDir)Engine\src\State;$(SolutionDir)Engine\src\Texture;$(SolutionDir)Engine\src\Events;$(SolutionDir)Engine\src\Window</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Framework_items;$(SolutionDir)Libs\Math\include;$(SolutionDir)Libs\AnimTime\include;$(SolutionDir)Libs\File\include;$(SolutionDir)Libs\PCSTree\include;$(SolutionDir)Libs\Manager\include;$(SolutionDir)Libs\Events\include;$(SolutionDir)Engine\DXTex\include;$(SolutionDir)Engine\shaders\compiled;$(SolutionDir)Engine\src;$(SolutionDir)Engine\src\Camera;$(SolutionDir)Engine\src\Engine;$(SolutionDir)Engine\src\Game;$(SolutionDir)Engine\src\GameObject;$(SolutionDir)Engine\src\Tool;$(SolutionDir)Engine\src\ShaderObject;$(SolutionDir)Engine\src\Mesh;$(SolutionDir)Engine\src\GraphicsObject;$(SolutionDir)Engine\src\Manager;$(SolutionDir)Engine\src\Buffers;$(SolutionDir)Engine\src\State;$(SolutionDir)Engine\src\Texture;$(SolutionDir)Engine\src\Events;$(SolutionDir)Engine\src\Window;$(SolutionDir)Engine\src\Renderer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
       <PrecompiledHeaderOutputFile>
@@ -185,6 +185,8 @@
     <ClInclude Include="Mesh\MeshNull.h" />
     <ClInclude Include="Mesh\MeshPyramid.h" />
     <ClInclude Include="Mesh\MeshReadFile.h" />
+    <ClInclude Include="Renderer\DirectXRenderer.h" />
+    <ClInclude Include="Renderer\RendererBsae.h" />
     <ClInclude Include="ShaderObject\ShaderMappings.h" />
     <ClInclude Include="ShaderObject\ShaderObject.h" />
     <ClInclude Include="ShaderObject\ShaderObjectHeaders.h" />
@@ -257,6 +259,8 @@
     <ClCompile Include="Mesh\MeshNull.cpp" />
     <ClCompile Include="Mesh\MeshPyramid.cpp" />
     <ClCompile Include="Mesh\MeshReadFile.cpp" />
+    <ClCompile Include="Renderer\DirectXRenderer.cpp" />
+    <ClCompile Include="Renderer\RendererBsae.cpp" />
     <ClCompile Include="ShaderObject\ShaderObject.cpp" />
     <ClCompile Include="ShaderObject\ShaderObjectNode.cpp" />
     <ClCompile Include="ShaderObject\ShaderObject_ColorByVertex.cpp" />

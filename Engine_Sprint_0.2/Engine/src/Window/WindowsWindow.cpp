@@ -5,7 +5,6 @@
 
 namespace Azul
 {
-	static WindowsWindow* s_MainWindowInstance = nullptr;
 	LPCSTR WindowName = "EngineWindowClass";
 
 	bool WindowsWindow::Create()
@@ -37,6 +36,8 @@ namespace Azul
 			m_Data.Title = nullptr;
 		}
 
+		delete this->mRenderer;
+
 		UnregisterClass(TEXT("AzulWindowClass"), instance);
 	}
 
@@ -48,6 +49,11 @@ namespace Azul
 	void WindowsWindow::Hide()
 	{
 		ShowWindow(hwnd, SW_HIDE);
+	}
+
+	void WindowsWindow::SetRenderer(RendererBsae* renderer)
+	{
+		this->mRenderer = renderer;
 	}
 
 	void WindowsWindow::SetTitle(const char* title)
@@ -77,6 +83,11 @@ namespace Azul
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
+	}
+
+	void WindowsWindow::OnRenderer()
+	{
+		this->mRenderer->RenderFrame();
 	}
 
 	WindowsWindow::WindowsWindow(HINSTANCE hInstance, const WindowProps& props)
@@ -152,7 +163,6 @@ namespace Azul
 		wndClass.lpszMenuName = nullptr;
 		wndClass.lpszClassName = WindowName;
 		wndClass.hIconSm = nullptr;
-
 
 		if (!RegisterClassEx(&wndClass))
 		{

@@ -19,8 +19,12 @@ namespace Azul
 		void Show() override;
 		void Hide() override;
 
+		void SetRenderer(RendererBsae* renderer) override;
+
 		virtual void SetTitle(const char* title) override;
+
 		void OnUpdate() override;
+		void OnRenderer() override;
 
 		inline void* GetNativeHandle() const override { return hwnd; }
 		inline unsigned int GetWidth() const override { return m_Data.Width; }

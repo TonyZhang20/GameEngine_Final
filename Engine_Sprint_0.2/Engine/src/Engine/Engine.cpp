@@ -8,24 +8,13 @@
 
 #include "Engine.h"
 #include "AnimTimer.h"
-#include "StateDirectXMan.h"
-#include "BufferTexture2D.h"
 
+#include "StateDirectXMan.h"
+#include "DirectXRenderer.h"
 
 
 namespace Azul
 {
-
-	LPCSTR g_WindowClassName = "EngineWindowClass";
-
-
-//#if _DEBUG
-//#define createDeviceFlags_define  D3D11_CREATE_DEVICE_DEBUG
-//
-//#else
-//#define createDeviceFlags_define  0
-//#endif
-
 	Engine::Engine(const char* _pName, int _width, int _height)
 		: 
 		mStateRenderTargetView(),
@@ -41,7 +30,7 @@ namespace Azul
 		mWindowWidth(_width),
 		mWindowHeight(_height)
 	{
-		//g_WindowHandle = 0;
+			
 	}
 
 	Engine::~Engine()
@@ -57,7 +46,7 @@ namespace Azul
 
 	int Engine::InitDirectX(HINSTANCE hInstance, BOOL vSync)
 	{
-		AZUL_UNUSED_VAR(hInstance);
+		// AZUL_UNUSED_VAR(hInstance);
 		// A window handle must have been created already.
 
 		//assert(g_WindowHandle != nullptr);
@@ -68,7 +57,7 @@ namespace Azul
 		RECT clientRect;
 		HWND hwnd = (HWND)this->pWindow->GetNativeHandle();
 
-		GetClientRect((HWND)this->pWindow->GetNativeHandle(), &clientRect);
+		GetClientRect(hwnd, &clientRect);
 
 		// Compute the exact client dimensions. This will be used
 		// to initialize the render targets for our swap chain.
@@ -131,7 +120,10 @@ namespace Azul
 			return -1;
 		}
 
-		if (InitDirectX(hInstance, ENABLE_VSYNC) != 0)
+		DirectXRenderer* dx11 = new DirectXRenderer();
+		this->pWindow->SetRenderer(dx11);
+
+		if (!dx11->Init(this->pWindow->GetNativeHandle(), true))
 		{
 			MessageBox(nullptr, TEXT("Failed to create DirectX device and swap chain."), TEXT("Error"), MB_OK);
 			return -1;
@@ -258,54 +250,51 @@ namespace Azul
 		{
 			EngineTime.Tic();
 
-			if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+			//Windows Message
+			this->pWindow->OnUpdate();
+
+			DWORD currentTime = timeGetTime();
+			float deltaTime = (currentTime - previousTime) / 1000.0f;
+			previousTime = currentTime;
+
+			// Cap the delta time to the max time step (useful if your 
+			// debugging and you don't want the deltaTime value to explode.
+			deltaTime = std::min<float>(deltaTime, maxTimeStep);
+
+			//Logic
+			Update(deltaTime);
+
+			this->pWindow->OnRenderer();
+
+			Render();
+
+			//--------------------------------
+			// Fast monitor sync
+			//--------------------------------
 			{
-				TranslateMessage(&msg);
-				DispatchMessage(&msg);
-			}
-			else
-			{
-				DWORD currentTime = timeGetTime();
-				float deltaTime = (currentTime - previousTime) / 1000.0f;
-				previousTime = currentTime;
+				AnimTime EngineLoopTime = EngineTime.Toc();
 
-				// Cap the delta time to the max time step (useful if your 
-				// debugging and you don't want the deltaTime value to explode.
-				deltaTime = std::min<float>(deltaTime, maxTimeStep);
+				// Current number of Frames... snap to the next 60Hz frame as target
+				int NumFrames_60Hz = AnimTime::Quotient(EngineLoopTime, AnimTime(AnimTime::Duration::NTSC_FRAME));
+				int TargetNumFrames_60Hz = NumFrames_60Hz + 1;
+				AnimTime Target_60Hz = TargetNumFrames_60Hz * AnimTime(AnimTime::Duration::NTSC_FRAME);
 
-				Update(deltaTime);
+				// we are before the flip... give a little cushion 
+				AnimTime Overhead_Time = 500 * AnimTime(AnimTime::Duration::ONE_MICROSECOND);
+				AnimTime EndTime = Target_60Hz - Overhead_Time;
 
-				ClearDepthStencilBuffer();
-
-				Render();
-
-				//--------------------------------
-				// Fast monitor sync
-				//--------------------------------
+				// Sit and spin.
+				while (EngineLoopTime < EndTime)
 				{
-					AnimTime EngineLoopTime = EngineTime.Toc();
-
-					// Current number of Frames... snap to the next 60Hz frame as target
-					int NumFrames_60Hz = AnimTime::Quotient(EngineLoopTime, AnimTime(AnimTime::Duration::NTSC_FRAME));
-					int TargetNumFrames_60Hz = NumFrames_60Hz + 1;
-					AnimTime Target_60Hz = TargetNumFrames_60Hz * AnimTime(AnimTime::Duration::NTSC_FRAME);
-
-					// we are before the flip... give a little cushion 
-					AnimTime Overhead_Time = 500 * AnimTime(AnimTime::Duration::ONE_MICROSECOND);
-					AnimTime EndTime = Target_60Hz - Overhead_Time;
-
-					// Sit and spin.
-					while (EngineLoopTime < EndTime)
-					{
-						EngineLoopTime = EngineTime.Toc();
-					}
+					EngineLoopTime = EngineTime.Toc();
 				}
-
-				//--------------------------------------------------------
-				// Wait for Vsync - flip front/back buffers
-				//--------------------------------------------------------
-				Present(ENABLE_VSYNC);
 			}
+
+			//--------------------------------------------------------
+			// Wait for Vsync - flip front/back buffers
+			//--------------------------------------------------------
+			Present(ENABLE_VSYNC);
+	
 		}
 
 		UnloadContent();

@@ -32,9 +32,6 @@ namespace Azul
 		float GetAspectRatio() const;
 		void SetDefaultTargetMode();
 
-		//void AttachShader();
-		//void RenderIndexBuffer();
-
 	};
 }
 

@@ -524,7 +524,7 @@ namespace Azul
 	//-----------------------------------------------------------------------------
 	void Game::Render()
 	{
-		this->SetDefaultTargetMode();
+		//this->SetDefaultTargetMode();
 		GameObjectManager::Draw();
 	}
 

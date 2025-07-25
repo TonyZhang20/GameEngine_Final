@@ -3,9 +3,10 @@
 
 #include "MathEngine.h"
 #include "Event.h"
-
 #include <cstring>
 #include <functional>
+
+#include "RendererBsae.h"
 
 namespace Azul
 {
@@ -42,12 +43,15 @@ namespace Azul
 		Window() = default;
 
 		virtual ~Window() {}
+
 		virtual void OnUpdate() = 0;
+		virtual void OnRenderer() = 0;
 
 		virtual void Show() = 0;
 		virtual void Hide() = 0;
 		
 		virtual void SetTitle(const char* title) = 0;
+		virtual void SetRenderer(RendererBsae* renderer) = 0;
 
 		virtual void* GetNativeHandle() const = 0;
 
@@ -60,6 +64,9 @@ namespace Azul
 		virtual void Destroy() = 0;
 
 		virtual bool IsOpen() const = 0;
+
+	protected:
+		RendererBsae* mRenderer = nullptr;
 	};
 }
 
