@@ -4,6 +4,8 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#include "WindowsWindow.h"
+
 #include <d3d11.h>
 #include "StateDepthStencil.h"
 #include "StateRasterizer.h"
@@ -37,23 +39,12 @@ namespace Azul
 
 		void Cleanup();
 
-
-
-		int InitApplication(HINSTANCE hInstance, int cmdShow);
 		int InitDirectX(HINSTANCE hInstance, BOOL vSync);
-		static LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 		int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE prevInstance, LPWSTR cmdLine, int cmdShow);
 
 		void Present(bool vSync);
 		static DXGI_RATIONAL QueryRefreshRate(UINT screenWidth, UINT screenHeight, BOOL vsync);
 		int Run();
-
-		HWND g_WindowHandle;
-
-		// Direct3D device and swap chain.
-		//ID3D11Device* g_d3dDevice;
-		//ID3D11DeviceContext* g_d3dDeviceContext;
-		//IDXGISwapChain* g_d3dSwapChain;
 
 		StateRenderTargetView mStateRenderTargetView;
 		StateDepthStencilView mDepthStencilView;
@@ -71,6 +62,7 @@ namespace Azul
 		const int mWindowWidth;
 		const int mWindowHeight;
 
+		WindowsWindow* pWindow = nullptr;
 	};
 
 

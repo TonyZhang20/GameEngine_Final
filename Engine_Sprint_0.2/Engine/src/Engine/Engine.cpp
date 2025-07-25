@@ -41,52 +41,15 @@ namespace Azul
 		mWindowWidth(_width),
 		mWindowHeight(_height)
 	{
-		g_WindowHandle = 0;
+		//g_WindowHandle = 0;
 	}
 
 	Engine::~Engine()
 	{
+		delete this->pWindow;
 		StateDirectXMan::Destroy();
 	}
 
-	// --------------------------------------------------------------
-	//  Standard windows magic to setup the application window
-	// --------------------------------------------------------------
-	int Engine::InitApplication(HINSTANCE hInstance, int cmdShow)
-	{
-		WNDCLASSEX wndClass = { 0 };
-		wndClass.cbSize = sizeof(WNDCLASSEX);
-		wndClass.style = CS_HREDRAW | CS_VREDRAW;
-		wndClass.lpfnWndProc = this->WndProc;
-		wndClass.hInstance = hInstance;
-		wndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
-		wndClass.hIcon = nullptr;
-		wndClass.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
-		wndClass.lpszMenuName = nullptr;
-		wndClass.lpszClassName = g_WindowClassName;
-		wndClass.hIconSm = nullptr;
-
-		if (!RegisterClassEx(&wndClass))
-		{
-			return -1;
-		}
-
-		RECT windowRect = { 0, 0, this->mWindowWidth, this->mWindowHeight };
-		AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, FALSE);
-
-		g_WindowHandle = CreateWindowA(g_WindowClassName, this->pName,
-			WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-			windowRect.right - windowRect.left,
-			windowRect.bottom - windowRect.top,
-			nullptr, nullptr, hInstance, nullptr);
-
-		assert(g_WindowHandle);
-
-		ShowWindow(g_WindowHandle, cmdShow);
-		UpdateWindow(g_WindowHandle);
-
-		return 0;
-	}
 
 	// ------------------------------------------------------------
 	//  Initialize the Direct Device with Swap Chain
@@ -96,17 +59,22 @@ namespace Azul
 	{
 		AZUL_UNUSED_VAR(hInstance);
 		// A window handle must have been created already.
-		assert(g_WindowHandle != nullptr);
 
+		//assert(g_WindowHandle != nullptr);
+		//RECT clientRect;
+		//GetClientRect(g_WindowHandle, &clientRect);
+
+		assert(this->pWindow != nullptr);
 		RECT clientRect;
-		GetClientRect(g_WindowHandle, &clientRect);
+		HWND hwnd = (HWND)this->pWindow->GetNativeHandle();
+
+		GetClientRect((HWND)this->pWindow->GetNativeHandle(), &clientRect);
 
 		// Compute the exact client dimensions. This will be used
 		// to initialize the render targets for our swap chain.
 		unsigned int clientWidth = clientRect.right - clientRect.left;
 		unsigned int clientHeight = clientRect.bottom - clientRect.top;
-
-		StateDirectXMan::Create(g_WindowHandle, vSync);
+		StateDirectXMan::Create(hwnd, vSync);
 
 		// The Direct3D device and swap chain were successfully created.
 		// Now we need to initialize the buffers of the swap chain.
@@ -154,7 +122,10 @@ namespace Azul
 		AZUL_UNUSED_VAR(prevInstance);
 		AZUL_UNUSED_VAR(cmdLine);
 
-		if (InitApplication(hInstance, cmdShow) != 0)
+		WindowProps props("Azul Engine", this->mWindowWidth, this->mWindowHeight);
+		this->pWindow = new WindowsWindow(hInstance, props);
+
+		if (!this->pWindow->Create())
 		{
 			MessageBox(nullptr, TEXT("Failed to create applicaiton window."), TEXT("Error"), MB_OK);
 			return -1;
@@ -166,50 +137,11 @@ namespace Azul
 			return -1;
 		}
 
+		//Loop
 		int returnCode = Run();
 
 		return returnCode;
 	}
-
-	// ------------------------------------
-	// windows process - messages
-	// ------------------------------------
-	LRESULT CALLBACK Engine::WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
-	{
-		PAINTSTRUCT paintStruct;
-		HDC hDC;
-
-		switch (message)
-		{
-		case WM_PAINT:
-		{
-			hDC = BeginPaint(hwnd, &paintStruct);
-			EndPaint(hwnd, &paintStruct);
-		}
-		break;
-
-		case WM_CHAR:
-		{
-			if (wParam == VK_ESCAPE)
-			{
-				PostQuitMessage(0);
-			}
-		}
-		break;
-
-		case WM_DESTROY:
-		{
-			PostQuitMessage(0);
-		}
-		break;
-
-		default:
-			return DefWindowProc(hwnd, message, wParam, lParam);
-		}
-
-		return 0;
-	}
-
 
 	// ------------------------------------------------------
 	// Find Refresh rate:
@@ -342,7 +274,9 @@ namespace Azul
 				deltaTime = std::min<float>(deltaTime, maxTimeStep);
 
 				Update(deltaTime);
+
 				ClearDepthStencilBuffer();
+
 				Render();
 
 				//--------------------------------
@@ -416,6 +350,7 @@ namespace Azul
 		//debugDev->ReportLiveDeviceObjects(D3D11_RLDO_SUMMARY | D3D11_RLDO_DETAIL);
 		SafeRelease(debugDev);
 #endif
+		//ShutDown
 
 		//SafeRelease(g_d3dDevice);
 	}
