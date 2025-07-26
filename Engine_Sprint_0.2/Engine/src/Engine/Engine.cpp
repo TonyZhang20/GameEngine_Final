@@ -10,7 +10,6 @@
 #include "AnimTimer.h"
 
 #include "StateDirectXMan.h"
-#include "DirectXRenderer.h"
 
 
 namespace Azul
@@ -120,10 +119,7 @@ namespace Azul
 			return -1;
 		}
 
-		DirectXRenderer* dx11 = new DirectXRenderer();
-		this->pWindow->SetRenderer(dx11);
-
-		if (!dx11->Init(this->pWindow->GetNativeHandle(), true))
+		if (InitDirectX(hInstance, ENABLE_VSYNC) != 0)
 		{
 			MessageBox(nullptr, TEXT("Failed to create DirectX device and swap chain."), TEXT("Error"), MB_OK);
 			return -1;
@@ -232,8 +228,6 @@ namespace Azul
 	// ------------------------------------
 	int Engine::Run()
 	{
-		MSG msg = { 0 };
-
 		static DWORD previousTime = timeGetTime();
 		static const float targetFramerate = 30.0f;
 		static const float maxTimeStep = 1.0f / targetFramerate;
@@ -246,14 +240,17 @@ namespace Azul
 			return -1;
 		}
 
-		while (msg.message != WM_QUIT)
+		bool quit = false;
+
+		while (!quit)
 		{
 			EngineTime.Tic();
 
 			//Windows Message
-			this->pWindow->OnUpdate();
+			this->pWindow->OnUpdate(quit);
 
 			DWORD currentTime = timeGetTime();
+
 			float deltaTime = (currentTime - previousTime) / 1000.0f;
 			previousTime = currentTime;
 
@@ -264,7 +261,7 @@ namespace Azul
 			//Logic
 			Update(deltaTime);
 
-			this->pWindow->OnRenderer();
+			ClearDepthStencilBuffer();
 
 			Render();
 
@@ -300,7 +297,7 @@ namespace Azul
 		UnloadContent();
 		Cleanup();
 
-		return static_cast<int>(msg.wParam);
+		return 0;
 	}
 
 	// ------------------------------------

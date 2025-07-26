@@ -36,8 +36,6 @@ namespace Azul
 			m_Data.Title = nullptr;
 		}
 
-		delete this->mRenderer;
-
 		UnregisterClass(TEXT("AzulWindowClass"), instance);
 	}
 
@@ -49,11 +47,6 @@ namespace Azul
 	void WindowsWindow::Hide()
 	{
 		ShowWindow(hwnd, SW_HIDE);
-	}
-
-	void WindowsWindow::SetRenderer(RendererBsae* renderer)
-	{
-		this->mRenderer = renderer;
 	}
 
 	void WindowsWindow::SetTitle(const char* title)
@@ -74,20 +67,20 @@ namespace Azul
 		strcpy_s(m_Data.Title, len, title);
 	}
 
-	void WindowsWindow::OnUpdate()
+	void WindowsWindow::OnUpdate(bool& quit)
 	{
-		MSG msg = {};
+		MSG msg = { 0 };
 
 		while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
+			if (msg.message == WM_QUIT)
+			{
+				quit = true;
+			}
+
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-	}
-
-	void WindowsWindow::OnRenderer()
-	{
-		this->mRenderer->RenderFrame();
 	}
 
 	WindowsWindow::WindowsWindow(HINSTANCE hInstance, const WindowProps& props)
